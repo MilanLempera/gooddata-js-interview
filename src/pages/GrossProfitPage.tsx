@@ -1,8 +1,8 @@
 import { ColumnChart } from '@gooddata/react-components';
-import { Paper, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import React, { useMemo, useState } from 'react';
+import ChartTile from '../components/ChartTile';
 import { DateRange, MonthFilterInline } from '../components/MonthFilter';
 
 const projectId = 'xms7ga4tf3g3nzucd8380o2bev8oeknp';
@@ -76,21 +76,18 @@ const GrossProfitPage: React.FC<Props> = ({ ...others }) => {
 
   return (
     <div {...others} className={classNames(classes.root, others.className)}>
-      <Paper className={classes.paper}>
-        <Typography variant={'h5'} className={classes.title}>
-          $ Gross Profit in <MonthFilterInline value={monthFilterValue} onChange={setMonthFilter} /> 2016
-        </Typography>
-        <div className={classes.chart}>
-          <ColumnChart measures={measures} filters={filters} projectId={projectId} />
-        </div>
-      </Paper>
+      <ChartTile
+        title={
+          <>
+            $ Gross Profit in <MonthFilterInline value={monthFilterValue} onChange={setMonthFilter} /> 2016
+          </>
+        }>
+        <ColumnChart measures={measures} filters={filters} projectId={projectId} />
+      </ChartTile>
 
-      <Paper className={classes.paper}>
-        <Typography variant={'h5'}>$ Gross Profit - All months</Typography>
-        <div className={classes.chart}>
-          <ColumnChart measures={measures} viewBy={viewBy} projectId={projectId} />
-        </div>
-      </Paper>
+      <ChartTile title="$ Gross Profit - All months">
+        <ColumnChart measures={measures} viewBy={viewBy} projectId={projectId} />
+      </ChartTile>
     </div>
   );
 };
