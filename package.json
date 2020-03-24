@@ -5,7 +5,7 @@
   "dependencies": {
     "@gooddata/react-components": "6.2.0",
     "http-proxy-middleware": "0.19.1",
-    "node-sass": "4.11.0",
+    "node-sass": "4.13.1",
     "react": "16.5.2",
     "react-dom": "16.5.2",
     "react-scripts": "2.1.8",
@@ -27,14 +27,14 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "cross-env": "6.0.3",
-    "husky": "^4.2.3",
-    "prettier": "^2.0.2",
-    "pretty-quick": "^2.0.1",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0"
+    "@types/react-dom": "^16.9.0",
+    "cross-env": "6.0.3",
+    "husky": "^4.2.3",
+    "prettier": "^2.0.2",
+    "pretty-quick": "^2.0.1"
   },
   "husky": {
     "hooks": {
