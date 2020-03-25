@@ -16,6 +16,9 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
+    "generate:catalog-export": "gdc-catalog-export",
+    "generate:catalog-types": "json-ts src/catalog/generated/project1.json --namespace Project1Catalog > src/catalog/generated/project1-types.d.ts",
+    "generate": "run-s generate:catalog-export generate:catalog-types",
     "start": "cross-env HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -36,9 +39,13 @@
     "@types/react": "^16.9.25",
     "@types/react-dom": "^16.9.5",
     "cross-env": "6.0.3",
+    "gdc-catalog-export": "^3.0.3",
     "husky": "^4.2.3",
+    "json-ts": "^1.6.4",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.0.2",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^2.0.1",
+    "quicktype": "^15.0.222"
   },
   "husky": {
     "hooks": {

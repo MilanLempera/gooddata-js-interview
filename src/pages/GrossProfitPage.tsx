@@ -2,39 +2,13 @@ import { ColumnChart } from '@gooddata/react-components';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import React, { useMemo, useState } from 'react';
+import { createDateFilter, createMeasure, createVisualizationAttribute, projectId } from '../catalog/catalogFunctions';
 import ChartTile from '../components/ChartTile';
 import { DateRange, MonthFilterInline } from '../components/MonthFilter';
 
-const projectId = 'xms7ga4tf3g3nzucd8380o2bev8oeknp';
+const measures = [createMeasure('m1', '$ Gross Profit')];
 
-const grossProfitMeasure = '/gdc/md/xms7ga4tf3g3nzucd8380o2bev8oeknp/obj/6877';
-const dateAttributeInMonths = '/gdc/md/xms7ga4tf3g3nzucd8380o2bev8oeknp/obj/2142';
-const dateAttribute = '/gdc/md/xms7ga4tf3g3nzucd8380o2bev8oeknp/obj/2180';
-
-const measures = [
-  {
-    measure: {
-      localIdentifier: 'm1',
-      definition: {
-        measureDefinition: {
-          item: {
-            uri: grossProfitMeasure,
-          },
-        },
-      },
-      alias: '$ Gross Profit',
-    },
-  },
-];
-
-const viewBy = {
-  visualizationAttribute: {
-    displayForm: {
-      uri: dateAttributeInMonths,
-    },
-    localIdentifier: 'a1',
-  },
-};
+const viewBy = createVisualizationAttribute('a1', 'Date (Date)', 'Month/Year (Date)');
 
 const useStyles = makeStyles(({ spacing }: Theme) => ({
   root: {},
@@ -62,16 +36,7 @@ const GrossProfitPage: React.FC<Props> = ({ ...others }) => {
   } as DateRange);
 
   const filters = useMemo(() => {
-    return [
-      {
-        absoluteDateFilter: {
-          dataSet: {
-            uri: dateAttribute,
-          },
-          ...monthFilterValue,
-        },
-      },
-    ];
+    return [createDateFilter('Date (Date)', monthFilterValue)];
   }, [monthFilterValue]);
 
   return (

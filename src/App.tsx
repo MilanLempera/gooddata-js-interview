@@ -4,6 +4,7 @@ import '@gooddata/react-components/styles/css/main.css';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import React from 'react';
+import { projectContext, ProjectDataProvider } from './catalog/ProjectContext';
 import GrossProfitPage from './pages/GrossProfitPage';
 
 const useStyles = makeStyles(({ spacing }: Theme) => ({
@@ -17,7 +18,9 @@ const App: React.FC<Props> = ({ ...others }) => {
 
   return (
     <div {...others} className={classNames(classes.root, others.className)}>
-      <GrossProfitPage />
+      <ProjectDataProvider value={projectContext}>
+        <GrossProfitPage />
+      </ProjectDataProvider>
     </div>
   );
 };
